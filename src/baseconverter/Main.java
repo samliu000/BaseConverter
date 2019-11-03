@@ -14,12 +14,6 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        String number;
-        int originalBase = 10;
-        int transformBase;
-        System.out.println("Enter number: ");
-        number = in.next();
-        
+        BaseConverter baseConversion = new BaseConverter();
     }
 }
