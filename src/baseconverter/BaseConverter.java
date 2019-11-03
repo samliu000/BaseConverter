@@ -10,7 +10,10 @@ package baseconverter;
  * @author samuelliu
  */
 public class BaseConverter {
-
+    public static String baseConverter(String number, int origBase, int tranBase){
+        
+        return "";
+    }
     
     
 }
