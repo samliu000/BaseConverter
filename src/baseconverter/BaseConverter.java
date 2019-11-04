@@ -97,7 +97,7 @@ public class BaseConverter {
             int valueOfIndex = numVals.get(number.charAt(i));
             decimalRepresentation += valueOfIndex * Math.pow(originalBase, number.length()-1-i);
         }
-        System.out.println(decimalRepresentation);
+        
         
         
         return "(" + decimalRepresentation + ")" + transformBase;
