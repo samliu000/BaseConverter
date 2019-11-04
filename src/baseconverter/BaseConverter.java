@@ -28,10 +28,9 @@ public class BaseConverter {
     private int transformBase;
     
     /**
-     * Map of non-integer values and their integer values. Can only go from 'A'
-     * to 'Z'.
+     * Map of characters and their values
      */
-    private Map<Character, Integer> nonNumbers;
+    private Map<Character, Integer> numVals;
     
     /**
      * Constructor that initializes instance variables by prompting the user for
@@ -80,28 +79,27 @@ public class BaseConverter {
         }
         
         /**
-          *initialize nonNumbers to handle cases where the inputed number contains
-          * non-integer values like 'A' or 'Z'
+          *initialize numVals to assign each character from 1-9 and 'A'-'Z' a value
           */
-        nonNumbers = new HashMap<>();
+        numVals = new HashMap<>();
         for(int i = 'A'; i <= 'Z'; i++){
-            nonNumbers.put((char)i, i - 55);
+            numVals.put((char)i, i - 55);
         }
-        System.out.println("Value of A: " + nonNumbers.get('Z'));
+        for(int i = 0; i < 10; i++){
+            numVals.put((char)(i+48), i);
+        }
     }
     /**
      * This method will do the base conversions
-     * @param number a string of numbers and letters that represents the number 
-     * we are converting
-     * @param origBase original base of number
-     * @param tranBase base that we want to transform the number into
      * @return representation of the number in the base we are transforming to
      */
-    public static String baseConverter(String number, int origBase, int tranBase){
+    public String baseConverter(){
+        int decimalRepresentation = 0;
         for(int i = 0; i < number.length(); i++){
+            int valueOfIndex = numVals.get(number.charAt(i));
             
         }
-        return "";
+        return "(" + decimalRepresentation + ")" + transformBase;
     }
     
     
