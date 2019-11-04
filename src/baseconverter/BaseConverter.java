@@ -6,6 +6,7 @@
 package baseconverter;
 
 import java.util.*;
+import java.math.*;
 
 /**
  *Class that handles base conversion.
@@ -38,9 +39,6 @@ public class BaseConverter {
      */
     public BaseConverter(){
         Scanner in = new Scanner(System.in);
-        String number;
-        int originalBase = 10;
-        int transformBase;
         boolean validInput = false;
         
         //Prompts user for base n representation of a number
@@ -97,8 +95,11 @@ public class BaseConverter {
         int decimalRepresentation = 0;
         for(int i = 0; i < number.length(); i++){
             int valueOfIndex = numVals.get(number.charAt(i));
-            
+            decimalRepresentation += valueOfIndex * Math.pow(originalBase, number.length()-1-i);
         }
+        System.out.println(decimalRepresentation);
+        
+        
         return "(" + decimalRepresentation + ")" + transformBase;
     }
     
