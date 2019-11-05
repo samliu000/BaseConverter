@@ -33,6 +33,8 @@ public class BaseConverter {
      */
     private Map<Character, Integer> numVals;
     
+    private Map<Integer, Character> valOfNums;
+    
     /**
      * Constructor that initializes instance variables by prompting the user for
      * values for each instance variable.
@@ -80,14 +82,25 @@ public class BaseConverter {
           *initialize numVals to assign each character from 1-9 and 'A'-'Z' a value
           */
         numVals = new HashMap<>();
-        for(int i = 'A'; i <= 'Z'; i++){
+        valOfNums = new HashMap<>();
+        for(int i = 'A'; i <= 'Z'; i++) {
             numVals.put((char)i, i - 55);
         }
-        for(int i = 0; i < 10; i++){
-            numVals.put((char)(i+48), i);
+        for(int j = 0; j < 10; j++) {
+            numVals.put((char)(j+48), j);
+        }
+        for(int i = 0; i < 10; i++) {
+            valOfNums.put(i, (char)(i + 48));
+        }
+        for(int k = 10; k < 36; k++) {
+            valOfNums.put(k, (char)(k + 55));
         }
     }
     
+    /**
+     * A getter method for the transformBase instance variable
+     * @return the value that represents the base that the user wants to transform to
+     */
     public int getRequestedBase(){
         return transformBase;
     }
@@ -104,9 +117,10 @@ public class BaseConverter {
         }
         
         int copyOfDecimalRepresentation = decimalRepresentation;
-        Stack<Integer> baseNRepresentation = new Stack<>();
+        Stack<Character> baseNRepresentation = new Stack<>();
         while(copyOfDecimalRepresentation != 0){
-            baseNRepresentation.add(copyOfDecimalRepresentation%transformBase);
+            char remainder = valOfNums.get(copyOfDecimalRepresentation%transformBase);
+            baseNRepresentation.add(remainder);
             copyOfDecimalRepresentation = copyOfDecimalRepresentation / transformBase;
         }
         
