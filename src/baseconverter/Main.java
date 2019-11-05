@@ -15,6 +15,6 @@ public class Main {
      */
     public static void main(String[] args) {
         BaseConverter baseConversion = new BaseConverter();
-        System.out.println("Result: " + baseConversion.baseConverter());
+        System.out.println("Base " + baseConversion.getRequestedBase() + ": " + baseConversion.baseConverter());
     }
 }

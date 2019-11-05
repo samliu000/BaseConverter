@@ -87,6 +87,11 @@ public class BaseConverter {
             numVals.put((char)(i+48), i);
         }
     }
+    
+    public int getRequestedBase(){
+        return transformBase;
+    }
+    
     /**
      * This method will do the base conversions
      * @return representation of the number in the base we are transforming to
@@ -98,9 +103,19 @@ public class BaseConverter {
             decimalRepresentation += valueOfIndex * Math.pow(originalBase, number.length()-1-i);
         }
         
+        int copyOfDecimalRepresentation = decimalRepresentation;
+        Stack<Integer> baseNRepresentation = new Stack<>();
+        while(copyOfDecimalRepresentation != 0){
+            baseNRepresentation.add(copyOfDecimalRepresentation%transformBase);
+            copyOfDecimalRepresentation = copyOfDecimalRepresentation / transformBase;
+        }
         
-        
-        return "(" + decimalRepresentation + ")" + transformBase;
+        String requestedRepresentation = "";
+        while(!baseNRepresentation.empty()){
+            requestedRepresentation += baseNRepresentation.pop();
+        }
+
+        return requestedRepresentation;
     }
     
     
