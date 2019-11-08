@@ -110,12 +110,14 @@ public class BaseConverter {
      * @return representation of the number in the base we are transforming to
      */
     public String baseConverter(){
+        //Convert to decimal first
         int decimalRepresentation = 0;
         for(int i = 0; i < number.length(); i++){
             int valueOfIndex = numVals.get(number.charAt(i));
             decimalRepresentation += valueOfIndex * Math.pow(originalBase, number.length()-1-i);
         }
         
+        //convert from decimal to requested base
         int copyOfDecimalRepresentation = decimalRepresentation;
         Stack<Character> baseNRepresentation = new Stack<>();
         while(copyOfDecimalRepresentation != 0){
@@ -123,6 +125,7 @@ public class BaseConverter {
             baseNRepresentation.add(remainder);
             copyOfDecimalRepresentation = copyOfDecimalRepresentation / transformBase;
         }
+        
         
         String requestedRepresentation = "";
         while(!baseNRepresentation.empty()){
